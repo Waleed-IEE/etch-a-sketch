@@ -4,3 +4,37 @@
     margin: 0;
     padding: 0;
 }
+html, body
+{
+    min-height: 100vh;
+}
+body, .container, .subdiv
+{
+    display: flex;
+}
+body, .container
+{
+    flex-direction: column;
+}
+body
+{
+    justify-content: flex-end;
+    align-items: center;
+}
+.container
+{
+    max-height: 85vh;
+    min-height: 85vh;
+    max-width: 85vh;
+    min-width: 85vh;
+    margin-bottom: 1%;
+}
+.subdiv
+{
+    flex-grow: 1;
+}
+.square
+{
+    flex-grow: 1;
+    background-color: aqua;
+}

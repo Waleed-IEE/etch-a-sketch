@@ -3,6 +3,7 @@ let mouseDown = false;
 let grid;
 
 const button = document.querySelector(".change-grid-size");
+const resetButton = document.querySelector(".reset-grid-drawing");
 
 function buttonClickEvent() {
     let userInput, checkValue = false;
@@ -25,6 +26,7 @@ function resetGrid(){
 }
 
 button.addEventListener("click", buttonClickEvent);
+resetButton.addEventListener("click", resetGrid);
 
 function setupGrid(grid = 16){
     createGrid(grid);

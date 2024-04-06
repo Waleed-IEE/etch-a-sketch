@@ -26,7 +26,8 @@ body
     justify-content: flex-end;
     align-items: center;
 }
-.welcome{
+.welcome
+{
     padding: 0 .2em;
     text-align: center;
     background-color: rgb(209, 209, 209, .65);
@@ -34,18 +35,22 @@ body
     color: rgb(45, 45, 45);
     border-radius: 1em;
 }
-.welcome.page{
+.welcome.page
+{
     padding-top: .2em;
 }
-.welcome.fun{
+.welcome.fun
+{
     padding-bottom: .2em;
 }
-.buttons{
+.buttons
+{
     margin: 1em 0 .3em;
     justify-content: center;
     gap: 2em;
 }
-button{
+button
+{
     padding: .3em 2em;
     font-weight: bold;
     border-style: none;

@@ -45,23 +45,29 @@ function createGrid(grid){
     }
 }
 
+function getTagClasses(event){
+    let parentClass = ` ${event.target.parentNode.className}`;
+    let currentClass = ` ${event.target.className}`;
+    let selectParentClass = parentClass.replace(/\s+/g, '.');
+    let selectCurrentClass = currentClass.replace(/\s+/g, '.');
+
+    let classesString = `${selectParentClass} ${selectCurrentClass}`;
+    return classesString
+}
+-
 function createEventListeners(){
     const squares = document.querySelectorAll(".square");
     squares.forEach(square => {square.addEventListener("mouseover", (event) => {
         if(mouseDown){
-            let parentClass = ` ${event.target.parentNode.className}`;
-            let currentClass = ` ${event.target.className}`;
-    
-            let selectParentClass = parentClass.replace(/\s+/g, '.');
-            let selectCurrentClass = currentClass.replace(/\s+/g, '.');
-            
-            let changeColor = document.querySelector(`${selectParentClass} ${selectCurrentClass}`);
-    
-            console.log(selectParentClass, selectCurrentClass);
+            let classesString = getTagClasses(event);
+            let changeColor = document.querySelector(classesString);
             changeColor.style.backgroundColor = "red";
         }
     })});
-    squares.forEach(square => {square.addEventListener("dragstart", (e) => e.preventDefault())})
+    squares.forEach(square => {square.addEventListener("dragstart", (e) => e.preventDefault())});
+    squares.forEach(square => {square.addEventListener("contextmenu", (e) => {
+        e.preventDefault()
+    })});
     
     // To make the squares only change color when the mouse is depressed AND moving through the grid
     window.addEventListener('mousedown', () => {

@@ -1,5 +1,5 @@
 const container = document.querySelector(".container");
-let mouseDown = false;
+let leftMouseDown = false, rightMouseDown = false;
 let grid;
 
 const button = document.querySelector(".change-grid-size");
@@ -58,23 +58,34 @@ function getTagClasses(event){
 function createEventListeners(){
     const squares = document.querySelectorAll(".square");
     squares.forEach(square => {square.addEventListener("mouseover", (event) => {
-        if(mouseDown){
+        if(leftMouseDown){
             let classesString = getTagClasses(event);
             let changeColor = document.querySelector(classesString);
             changeColor.style.backgroundColor = "red";
         }
+        else if (rightMouseDown){
+            let classesString = getTagClasses(event);
+            let removeColor = document.querySelector(classesString);
+            removeColor.style.backgroundColor = "aqua";
+        }
     })});
     squares.forEach(square => {square.addEventListener("dragstart", (e) => e.preventDefault())});
     squares.forEach(square => {square.addEventListener("contextmenu", (e) => {
-        e.preventDefault()
+        e.preventDefault();
     })});
     
     // To make the squares only change color when the mouse is depressed AND moving through the grid
-    window.addEventListener('mousedown', () => {
-        mouseDown = true;
+    window.addEventListener('mousedown', (e) => {
+        if(e.button === 0){
+            leftMouseDown = true;
+        }
+        else if (e.button === 2){
+            rightMouseDown = true;
+        }
     });
     window.addEventListener('mouseup', () => {
-        mouseDown = false;
+        leftMouseDown = false;
+        rightMouseDown = false;
     });
 }
 

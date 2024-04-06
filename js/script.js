@@ -14,6 +14,9 @@ function buttonClickEvent() {
             alert(`INVALID input! You typed: ${userInput}\nPlease enter a number that's bigger than 0 and smaller or equal to 100`);
         }
     }while(checkValue);
+    resetGrid(grid);
+}
+function resetGrid(){
 
     while(container.firstChild){
         container.removeChild(container.firstChild);

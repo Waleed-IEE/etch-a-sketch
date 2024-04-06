@@ -28,6 +28,9 @@ body
     max-width: 85vh;
     min-width: 85vh;
     margin-bottom: 1%;
+    border-width: 2px;
+    border-color: red;
+    border-style: solid;
 }
 .subdiv
 {

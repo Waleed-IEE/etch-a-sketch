@@ -2,7 +2,8 @@ const container = document.querySelector(".container");
 let mouseDown = false;
 
 const button = document.querySelector(".change-grid-size");
-button.addEventListener("click", () => {
+
+function buttonClickEvent() {
     let grid, userInput, checkValue = false;
     do{
         userInput = prompt("Enter a number that is 0 < YOUR_INPUT < 101", 16);
@@ -17,7 +18,8 @@ button.addEventListener("click", () => {
         container.removeChild(container.firstChild);
     }
     setupGrid(grid);
-})
+}
+button.addEventListener("click", buttonClickEvent);
 
 function setupGrid(grid = 16){
     createGrid(grid);

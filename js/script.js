@@ -1,5 +1,5 @@
 const container = document.querySelector(".container");
-let leftMouseDown = false, rightMouseDown = false;
+let mouseDown = false;
 let grid;
 
 const button = document.querySelector(".change-grid-size");
@@ -56,27 +56,40 @@ function getTagClasses(event){
 }
 
 function drawOrErase(event){
-    if(leftMouseDown){
-        let classesString = getTagClasses(event);
-        let changeColor = document.querySelector(classesString);
-        changeColor.style.backgroundColor = "red";
-    }
-    else if (rightMouseDown){
-        let classesString = getTagClasses(event);
-        let removeColor = document.querySelector(classesString);
-        removeColor.style.backgroundColor = "aqua";
+    if (mouseDown){
+        if(event.button === 0){
+            let classesString = getTagClasses(event);
+            let changeColor = document.querySelector(classesString);
+            changeColor.style.backgroundColor = "red";
+        }
+        else if (event.button === 2){
+            let classesString = getTagClasses(event);
+            let removeColor = document.querySelector(classesString);
+            removeColor.style.backgroundColor = "aqua";
+        }
     }
 }
 
 function createEventListeners(){
     const squares = document.querySelectorAll(".square");
     squares.forEach(square => {
+        square.addEventListener("mousedown", (e) => {
+            mouseDown = true;
+            drawOrErase(e);
+        });
         square.addEventListener("mouseover", drawOrErase);
+        square.addEventListener("mouseup", () => mouseDown = false);
         square.addEventListener("dragstart", (e) => e.preventDefault());
         square.addEventListener("contextmenu", (e) => e.preventDefault());
     });
     
-    // To make the squares only change color when the mouse is depressed AND moving through the grid
+    
+}
+
+setupGrid();
+
+/*
+// To make the squares only change color when the mouse is depressed AND moving through the grid
     window.addEventListener('mousedown', (e) => {
         if(e.button === 0){
             leftMouseDown = true;
@@ -89,6 +102,4 @@ function createEventListeners(){
         leftMouseDown = false;
         rightMouseDown = false;
     });
-}
-
-setupGrid();
+*/

@@ -3,12 +3,13 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family:monospace;
 }
 html, body
 {
     min-height: 100vh;
 }
-body, .container, .subdiv
+.buttons, .container, .subdiv
 {
     display: flex;
 }
@@ -18,18 +19,48 @@ body, .container
 }
 body
 {
+    background-image:url(../images/background.jpg);
+	background-position:center;
+	background-size:cover;
+    margin: 0 10%;
     justify-content: flex-end;
     align-items: center;
 }
+.welcome{
+    padding: 0 .2em;
+    text-align: center;
+    background-color: rgb(209, 209, 209, .65);
+    backdrop-filter: 5px;
+    color: rgb(45, 45, 45);
+    border-radius: 1em;
+}
+.welcome.page{
+    padding-top: .2em;
+}
+.welcome.tutorial{
+    padding-bottom: .2em;
+}
+.buttons{
+    margin: 1em 0 .3em;
+    justify-content: center;
+    gap: 2em;
+}
+button{
+    padding: .3em 2em;
+    font-weight: bold;
+    border-style: none;
+    background-color: rgb(200, 200, 200);
+}
 .container
 {
-    max-height: 85vh;
-    min-height: 85vh;
-    max-width: 85vh;
-    min-width: 85vh;
-    margin-bottom: 1%;
-    border-width: 2px;
-    border-color: red;
+    margin: 0 auto;
+    max-height: 80vh;
+    min-height: 80vh;
+    max-width: 80vh;
+    min-width: 80vh;
+    border-width: 5px;
+    border-color: rgb(209, 209, 209);
+    border-radius: 2.5px;
     border-style: solid;
 }
 .subdiv

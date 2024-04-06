@@ -3,7 +3,16 @@ let mouseDown = false;
 
 const button = document.querySelector(".change-grid-size");
 button.addEventListener("click", () => {
-    let grid = +prompt("Give", 16);
+    let grid, userInput, checkValue = false;
+    do{
+        userInput = prompt("Enter a number that is 0 < YOUR_INPUT < 101", 16);
+        grid = +userInput;
+        checkValue = isNaN(grid) || grid < 1 || grid > 100;
+        if (checkValue){
+            alert(`INVALID input! You typed: ${userInput}\nPlease enter a number that's bigger than 0 and smaller or equal to 100`);
+        }
+    }while(checkValue);
+
     while(container.firstChild){
         container.removeChild(container.firstChild);
     }

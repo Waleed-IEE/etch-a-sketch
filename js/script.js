@@ -1,5 +1,5 @@
 const container = document.querySelector(".container");
-let mouseDown = false;
+let leftMouseDown = false, rightMouseDown = false;
 let grid;
 
 const button = document.querySelector(".change-grid-size");
@@ -56,17 +56,15 @@ function getTagClasses(event){
 }
 
 function drawOrErase(event){
-    if (mouseDown){
-        if(event.button === 0){
-            let classesString = getTagClasses(event);
-            let changeColor = document.querySelector(classesString);
-            changeColor.style.backgroundColor = "red";
-        }
-        else if (event.button === 2){
-            let classesString = getTagClasses(event);
-            let removeColor = document.querySelector(classesString);
-            removeColor.style.backgroundColor = "aqua";
-        }
+    if(leftMouseDown){
+        let classesString = getTagClasses(event);
+        let changeColor = document.querySelector(classesString);
+        changeColor.style.backgroundColor = "red";
+    }
+    if (rightMouseDown){
+        let classesString = getTagClasses(event);
+        let removeColor = document.querySelector(classesString);
+        removeColor.style.backgroundColor = "aqua";
     }
 }
 
@@ -74,11 +72,19 @@ function createEventListeners(){
     const squares = document.querySelectorAll(".square");
     squares.forEach(square => {
         square.addEventListener("mousedown", (e) => {
-            mouseDown = true;
+            if (e.button === 0){
+                leftMouseDown = true;
+            }
+            else if (e.button === 2){
+                rightMouseDown = true;
+            }
             drawOrErase(e);
         });
+        square.addEventListener("mouseup", () => {
+            leftMouseDown = false;
+            rightMouseDown = false;
+        });
         square.addEventListener("mouseover", drawOrErase);
-        square.addEventListener("mouseup", () => mouseDown = false);
         square.addEventListener("dragstart", (e) => e.preventDefault());
         square.addEventListener("contextmenu", (e) => e.preventDefault());
     });

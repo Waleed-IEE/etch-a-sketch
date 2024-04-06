@@ -59,12 +59,12 @@ function drawOrErase(event){
     if(leftMouseDown){
         let classesString = getTagClasses(event);
         let changeColor = document.querySelector(classesString);
-        changeColor.style.backgroundColor = "red";
+        changeColor.style.backgroundColor = "black";
     }
     if (rightMouseDown){
         let classesString = getTagClasses(event);
         let removeColor = document.querySelector(classesString);
-        removeColor.style.backgroundColor = "aqua";
+        removeColor.style.backgroundColor = "white";
     }
 }
 

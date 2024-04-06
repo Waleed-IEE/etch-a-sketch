@@ -37,7 +37,7 @@ body
 .welcome.page{
     padding-top: .2em;
 }
-.welcome.tutorial{
+.welcome.fun{
     padding-bottom: .2em;
 }
 .buttons{
@@ -49,7 +49,9 @@ button{
     padding: .3em 2em;
     font-weight: bold;
     border-style: none;
-    background-color: rgb(200, 200, 200);
+    border-radius: .5em;
+    background-color: rgb(80, 80, 80);
+    color: white;
 }
 .container
 {

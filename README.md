@@ -3,7 +3,7 @@ Browser version of Etch a Sketch board.
 
 ## Preview
 
-[Click me! To visit my Etch a Sketch web page.](https://waleed-iee.github.io/etch-a-sketch/)
+[Click me!](https://waleed-iee.github.io/etch-a-sketch/) To visit my Etch a Sketch web page.
 
 ## Credits
 

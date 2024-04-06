@@ -1,9 +1,12 @@
 const container = document.querySelector(".container");
 let leftMouseDown = false, rightMouseDown = false;
 let grid;
+let defaultColor = true;
 
 const button = document.querySelector(".change-grid-size");
 const resetButton = document.querySelector(".reset-grid-drawing");
+const defaultColorButton = document.querySelector(".default-color");
+const rainbowColorButton = document.querySelector(".rainbow-color");
 
 function buttonClickEvent() {
     let userInput, checkValue = false;
@@ -27,6 +30,9 @@ function resetGrid(){
 
 button.addEventListener("click", buttonClickEvent);
 resetButton.addEventListener("click", resetGrid);
+
+defaultColorButton.addEventListener("click", () => defaultColor = true);
+rainbowColorButton.addEventListener("click", () => defaultColor = false);
 
 function setupGrid(grid = 16){
     createGrid(grid);
@@ -73,18 +79,24 @@ function drawOrErase(event){
         let classesString = getTagClasses(event);
         let changeColor = document.querySelector(classesString);
 
-        if (changeColor.style.backgroundColor === ""){
-            let red = Math.floor(Math.random() * 256);
-            let green = Math.floor(Math.random() * 256);
-            let blue = Math.floor(Math.random() * 256);
-            changeColor.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+        if (defaultColor === false){
+            if (changeColor.style.backgroundColor === "" || changeColor.style.backgroundColor === "black"){
+                    let red = Math.floor(Math.random() * 256);
+                    let green = Math.floor(Math.random() * 256);
+                    let blue = Math.floor(Math.random() * 256);
+                    changeColor.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+            
+            }
+            else {
+                let rgbArrayDarkened = darkenColorValues(changeColor.style.backgroundColor);
+                let red = rgbArrayDarkened[0];
+                let green = rgbArrayDarkened[1];
+                let blue = rgbArrayDarkened[2];
+                changeColor.style.cssText = `background-color: rgb(${red}, ${green}, ${blue});`;
+            }
         }
-        else {
-            let rgbArrayDarkened = darkenColorValues(changeColor.style.backgroundColor);
-            let red = rgbArrayDarkened[0];
-            let green = rgbArrayDarkened[1];
-            let blue = rgbArrayDarkened[2];
-            changeColor.style.cssText = `background-color: rgb(${red}, ${green}, ${blue});`;
+        else if(defaultColor === true){
+            changeColor.style.backgroundColor = `black`;
         }
     }
     if (rightMouseDown){

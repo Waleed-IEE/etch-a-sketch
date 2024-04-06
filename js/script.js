@@ -72,9 +72,7 @@ function createEventListeners(){
     const squares = document.querySelectorAll(".square");
     squares.forEach(square => {square.addEventListener("mouseover", drawOrErase)});
     squares.forEach(square => {square.addEventListener("dragstart", (e) => e.preventDefault())});
-    squares.forEach(square => {square.addEventListener("contextmenu", (e) => {
-        e.preventDefault();
-    })});
+    squares.forEach(square => {square.addEventListener("contextmenu", (e) => e.preventDefault())});
     
     // To make the squares only change color when the mouse is depressed AND moving through the grid
     window.addEventListener('mousedown', (e) => {

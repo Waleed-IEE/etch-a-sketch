@@ -54,20 +54,43 @@ function getTagClasses(event){
     let classesString = `${selectParentClass} ${selectCurrentClass}`;
     return classesString
 }
-
+function darkenColorValues(rgbString){
+    rgbArray = extractColorValues(rgbString);
+    let darkenColor = 0.9;
+    let red = rgbArray[0] * darkenColor;
+    let green = rgbArray[1] * darkenColor;
+    let blue = rgbArray[2] * darkenColor;
+    rgbArrayDarkened = [red, green, blue];
+    return rgbArrayDarkened;
+}
+function extractColorValues(rgbString){
+    const rgbValues = rgbString.substring(4, rgbString.length - 1);
+    const rgbArray = rgbValues.split(',').map(Number);
+    return rgbArray;
+}
 function drawOrErase(event){
     if(leftMouseDown){
         let classesString = getTagClasses(event);
         let changeColor = document.querySelector(classesString);
-        let red = Math.floor(Math.random() * 256);
-        let green = Math.floor(Math.random() * 256);
-        let blue = Math.floor(Math.random() * 256);
-        changeColor.style.cssText = `background-color: rgb(${red}, ${green}, ${blue});`;
+
+        if (changeColor.style.backgroundColor === ""){
+            let red = Math.floor(Math.random() * 256);
+            let green = Math.floor(Math.random() * 256);
+            let blue = Math.floor(Math.random() * 256);
+            changeColor.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+        }
+        else {
+            let rgbArrayDarkened = darkenColorValues(changeColor.style.backgroundColor);
+            let red = rgbArrayDarkened[0];
+            let green = rgbArrayDarkened[1];
+            let blue = rgbArrayDarkened[2];
+            changeColor.style.cssText = `background-color: rgb(${red}, ${green}, ${blue});`;
+        }
     }
     if (rightMouseDown){
         let classesString = getTagClasses(event);
         let removeColor = document.querySelector(classesString);
-        removeColor.style.backgroundColor = "white";
+        removeColor.style.backgroundColor = "";
     }
 }
 

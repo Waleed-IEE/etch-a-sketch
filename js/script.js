@@ -54,7 +54,7 @@ function getTagClasses(event){
     let classesString = `${selectParentClass} ${selectCurrentClass}`;
     return classesString
 }
--
+
 function createEventListeners(){
     const squares = document.querySelectorAll(".square");
     squares.forEach(square => {square.addEventListener("mouseover", (event) => {

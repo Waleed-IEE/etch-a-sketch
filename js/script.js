@@ -43,6 +43,7 @@ function createEventListeners(){
             changeColor.style.backgroundColor = "red";
         }
     })});
+    squares.forEach(square => {square.addEventListener("dragstart", (e) => e.preventDefault())})
     
     // To make the squares only change color when the mouse is depressed AND moving through the grid
     window.addEventListener('mousedown', () => {

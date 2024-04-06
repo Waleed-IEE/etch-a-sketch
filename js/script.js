@@ -55,20 +55,22 @@ function getTagClasses(event){
     return classesString
 }
 
+function drawOrErase(event){
+    if(leftMouseDown){
+        let classesString = getTagClasses(event);
+        let changeColor = document.querySelector(classesString);
+        changeColor.style.backgroundColor = "red";
+    }
+    else if (rightMouseDown){
+        let classesString = getTagClasses(event);
+        let removeColor = document.querySelector(classesString);
+        removeColor.style.backgroundColor = "aqua";
+    }
+}
+
 function createEventListeners(){
     const squares = document.querySelectorAll(".square");
-    squares.forEach(square => {square.addEventListener("mouseover", (event) => {
-        if(leftMouseDown){
-            let classesString = getTagClasses(event);
-            let changeColor = document.querySelector(classesString);
-            changeColor.style.backgroundColor = "red";
-        }
-        else if (rightMouseDown){
-            let classesString = getTagClasses(event);
-            let removeColor = document.querySelector(classesString);
-            removeColor.style.backgroundColor = "aqua";
-        }
-    })});
+    squares.forEach(square => {square.addEventListener("mouseover", drawOrErase)});
     squares.forEach(square => {square.addEventListener("dragstart", (e) => e.preventDefault())});
     squares.forEach(square => {square.addEventListener("contextmenu", (e) => {
         e.preventDefault();

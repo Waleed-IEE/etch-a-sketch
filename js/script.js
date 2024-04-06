@@ -59,7 +59,10 @@ function drawOrErase(event){
     if(leftMouseDown){
         let classesString = getTagClasses(event);
         let changeColor = document.querySelector(classesString);
-        changeColor.style.backgroundColor = "black";
+        let red = Math.floor(Math.random() * 256);
+        let green = Math.floor(Math.random() * 256);
+        let blue = Math.floor(Math.random() * 256);
+        changeColor.style.cssText = `background-color: rgb(${red}, ${green}, ${blue});`;
     }
     if (rightMouseDown){
         let classesString = getTagClasses(event);

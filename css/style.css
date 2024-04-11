@@ -57,6 +57,7 @@ button
     border-radius: .5em;
     background-color: rgb(80, 80, 80);
     color: white;
+    cursor: pointer;
 }
 .container
 {
@@ -76,6 +77,7 @@ button
 }
 .square
 {
+    cursor: crosshair;
     flex-grow: 1;
     background-color: white;
 }
